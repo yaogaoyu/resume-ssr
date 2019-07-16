@@ -1,0 +1,10 @@
+*
+
+!.gitignore
+
+!etc/
+!src/
+
+!app.js
+!package-lock.json
+!package.json
