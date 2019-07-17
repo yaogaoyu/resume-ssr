@@ -1,0 +1,6 @@
+webpack.config.js
+src/index.js
+mock/*.js
+static/**/*.js
+dist/**/*.js
+node_modules/**/*.js

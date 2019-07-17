@@ -1,1 +1,9 @@
-module.exports = () => <div>SSR INDEX</div>
+import React from 'react';
+
+export default class Index extends React.Component {
+    render() {
+        return (
+            <div>SSR INDEX</div>
+        );
+    }
+}

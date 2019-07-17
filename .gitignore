@@ -4,7 +4,15 @@
 
 !etc/
 !src/
+!webpack/
 
+!.babelrc
+!.eslintignore
+!.eslintrc
+!.npmrc
+!.stylelintignore
+!.stylelintrc
 !app.js
 !package-lock.json
 !package.json
+!postcss.config.js

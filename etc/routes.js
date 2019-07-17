@@ -1,3 +1,4 @@
-module.exports = [
-    ['/', 'get', 'src/pages/Index/index.jsx'],
+export default [
+    ['/', 'get', 'src/pages/Index'],
+    ['/aaa', 'get', 'src/pages/Test'],
 ];
