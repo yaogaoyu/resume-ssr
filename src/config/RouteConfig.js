@@ -8,7 +8,7 @@
 export default [{
         path: '/',
         exact: true,
-        component: () => import('../pages/Index'),
+        component: () => require('../pages/Index'),
     },
     // {
     //     path: '/tableDemo',

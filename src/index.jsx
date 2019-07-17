@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { StaticRouter, Route } from 'react-router-dom';
 // import { routeType } from 'config/config.json';
 import Router from './router/Router';
 
 
-const App = () => {
+export default () => {
     /**
      * 渲染全局页脚
      */
@@ -35,4 +35,4 @@ const App = () => {
     return layout;
 };
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+// ReactDOM.render(<App />, document.querySelector('#app'));

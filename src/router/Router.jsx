@@ -6,7 +6,7 @@
 
 import React, { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RouteConfig from 'config/RouteConfig';
+import RouteConfig from '../config/RouteConfig';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 function RouterGenerator() {
@@ -17,22 +17,18 @@ function RouterGenerator() {
      */
     function getRouters(routerConf) {
         return routerConf.map((router) => {
-            let SubRoutes = null;
-            if (router.routes) {
-                SubRoutes = getRouters(router.routes);
-            }
+            // let SubRoutes = null;
+            // if (router.routes) {
+            //     SubRoutes = getRouters(router.routes);
+            // }
             // 包装实际组件，将路由props、子路由插入组件中
             const component = (routeProps) => {
-                const Component = lazy(() => {
-                    return router.component();
-                });
+                // const Component = lazy(() => {
+                //     return router.component();
+                // });
+                const Component = router.component();
                 return (
-                    <ErrorBoundary>
-                        <React.Suspense fallback={<div>loading</div>}>
-                            <Component {...routeProps} />
-                            {SubRoutes}
-                        </React.Suspense>
-                    </ErrorBoundary>
+                    <Component {...routeProps} />
                 );
             };
             return (
