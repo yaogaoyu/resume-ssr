@@ -10,38 +10,38 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(),
         // new BundleAnalyzerPlugin(),
     ],
-    // optimization: {
-    //     splitChunks: {
-    //         chunks: 'all',
-    //         minSize: 30000,
-    //         maxSize: 0,
-    //         minChunks: 1,
-    //         maxAsyncRequests: 5,
-    //         maxInitialRequests: 3,
-    //         automaticNameDelimiter: '-',
-    //         name: true,
-    //         cacheGroups: {
-    //             react: {
-    //                 test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
-    //                 name: 'react',
-    //                 chunks: 'all',
-    //                 enforce: true,
-    //             },
-    //             antd: {
-    //                 test: /[\\/]node_modules[\\/]antd[\\/]/,
-    //                 name: 'antd',
-    //                 chunks: 'all',
-    //                 enforce: true,
-    //             },
-    //             vendors: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'vendors',
-    //                 chunks: 'async',
-    //                 enforce: true,
-    //             },
-    //             default: false,
-    //         },
-    //     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '-',
+            name: true,
+            cacheGroups: {
+                react: {
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
+                    name: 'react',
+                    chunks: 'all',
+                    enforce: true,
+                },
+                antd: {
+                    test: /[\\/]node_modules[\\/]antd[\\/]/,
+                    name: 'antd',
+                    chunks: 'all',
+                    enforce: true,
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'async',
+                    enforce: true,
+                },
+                default: false,
+            },
+        },
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
