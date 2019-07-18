@@ -1,6 +1,5 @@
-server/*.js
 webpack/webpack.*.js
-src/app.js
+src/app.*.js
 mock/*.js
 static/**/*.js
 dist/**/*.js

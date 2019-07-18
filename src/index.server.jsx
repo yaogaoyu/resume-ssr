@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 // import ReactDOM from 'react-dom';
 import { StaticRouter, Route } from 'react-router-dom';
 // import { routeType } from 'config/config.json';
-import Router from './router/Router';
+import Router from './router/Router.server';
 
 
-export default () => {
+export default (props) => {
     /**
      * 渲染全局页脚
      */
@@ -16,7 +16,7 @@ export default () => {
     // const RouterType = getRouteType();
 
     const layout = (
-        <StaticRouter>
+        <StaticRouter location={props.location}>
             <Route
                 render={() => {
                     return (

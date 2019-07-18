@@ -2,13 +2,17 @@
  * 定义路由配置。
  *
  * @author    Yao
-
  */
 /* eslint-disable */
+
 export default [{
         path: '/',
         exact: true,
-        component: () => require('../pages/Index'),
+        component: () => import('../pages/Index'),
+    }, {
+        path: '/test',
+        // component: () => require('../pages/Index'),
+        component: () => import('../pages/Test'),
     },
     // {
     //     path: '/tableDemo',

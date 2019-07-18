@@ -4,10 +4,9 @@
  * @author Yao
  */
 
-import React, { lazy } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RouteConfig from '../config/RouteConfig';
-import ErrorBoundary from '../components/ErrorBoundary';
+import RouteConfig from '../config/RouteConfig.server';
 
 function RouterGenerator() {
     /**
@@ -26,7 +25,7 @@ function RouterGenerator() {
                 // const Component = lazy(() => {
                 //     return router.component();
                 // });
-                const Component = router.component();
+                const Component = router.component;
                 return (
                     <Component {...routeProps} />
                 );

@@ -1,9 +1,8 @@
 import React from 'react';
+import './index.less';
 
-export default class Index extends React.Component {
+export default class Index extends React.PureComponent {
     render() {
-        return (
-            <div>SSR INDEX</div>
-        );
+        return <div className="app">SSR INDEX</div>;
     }
 }

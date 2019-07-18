@@ -10,7 +10,7 @@ const Package = require('../package.json');
 const PATH_NODE_MODULES = path.resolve(__dirname, '../node_modules/');
 const PATH_SRC = path.resolve(__dirname, '../src/');
 const src = {
-    index: `${PATH_SRC}/app.js`,
+    index: `${PATH_SRC}/app.client.js`,
     html: `${PATH_SRC}/index.html`,
 };
 module.exports = {
