@@ -21,7 +21,7 @@ const app = express();
 app.enable('view cache'); //开启模板缓存
 
 //对静态文件统一设置一个虚拟路径，方便nginx做代理
-app.use('/public', express.static(path.resolve(__dirname, '../dist')));
+app.use('/static', express.static(path.resolve(__dirname, '../dist')));
 
 let html = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf8');  //require('./index.html');
 html = html.replace(/<script.+<\/script>/, '');

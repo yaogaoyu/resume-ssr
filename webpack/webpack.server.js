@@ -81,6 +81,86 @@ module.exports = {
         process: true
     },
     externals: [nodeExternals()],
+    module: {
+        rules: [{
+            test: /\.jsx?$/, // eslint检查
+            enforce: 'pre',
+            include: [PATH_SRC],
+            exclude: [PATH_NODE_MODULES],
+            loader: 'eslint-loader',
+        },
+        {
+            test: /\.jsx?$/, // 转化ES6语法
+            include: [PATH_SRC],
+            exclude: [PATH_NODE_MODULES],
+            use: [
+                'cache-loader',
+                {
+                    loader: 'thread-loader',
+                    // 有同样配置的 loader 会共享一个 worker 池(worker pool)
+                    options: {
+                        workers: os.cpus().length, // 产生的 worker 的数量，默认是 cpu 的核心数
+                        workerParallelJobs: 50, // 一个 worker 进程中并行执行工作的数量
+                        poolTimeout: 2000, // 闲置时定时删除 worker 进程
+                        // 池(pool)分配给 worker 的工作数量
+                        // 默认为 200
+                        // 降低这个数值会降低总体的效率，但是会提升工作分布更均一
+                        poolParallelJobs: 50,
+                        // 池(pool)的名称
+                        // 可以修改名称来创建其余选项都一样的池(pool)
+                        name: 'my-pool',
+                    },
+                },
+                'babel-loader',
+            ],
+        },
+        {
+            test: /\.css$/,
+            use: [{
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../',
+                    // hmr: process.env.NODE_ENV === 'development',
+                  },
+            }, 'css-loader', 'postcss-loader'],
+        },
+        {
+            test: /\.less$/, // 处理本地less样式文件，开启css module功能
+            include: [PATH_SRC],
+            exclude: [PATH_NODE_MODULES],
+            use: [
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: '../',
+                        // hmr: process.env.NODE_ENV === 'development',
+                      },
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                    },
+                },
+                'postcss-loader',
+                {
+                    loader: 'less-loader',
+                    options: {
+                        javascriptEnabled: true,
+                    },
+                },
+            ],
+        },
+        {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    limit: 11920,
+                },
+            }],
+        }],
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new ProgressBarPlugin(),
@@ -167,73 +247,5 @@ module.exports = {
                 },
             }),
         ],
-    },
-    module: {
-        rules: [{
-            test: /\.jsx?$/, // eslint检查
-            enforce: 'pre',
-            include: [PATH_SRC],
-            exclude: [PATH_NODE_MODULES],
-            loader: 'eslint-loader',
-        },
-        {
-            test: /\.jsx?$/, // 转化ES6语法
-            include: [PATH_SRC],
-            exclude: [PATH_NODE_MODULES],
-            use: [
-                'cache-loader',
-                {
-                    loader: 'thread-loader',
-                    // 有同样配置的 loader 会共享一个 worker 池(worker pool)
-                    options: {
-                        workers: os.cpus().length, // 产生的 worker 的数量，默认是 cpu 的核心数
-                        workerParallelJobs: 50, // 一个 worker 进程中并行执行工作的数量
-                        poolTimeout: 2000, // 闲置时定时删除 worker 进程
-                        // 池(pool)分配给 worker 的工作数量
-                        // 默认为 200
-                        // 降低这个数值会降低总体的效率，但是会提升工作分布更均一
-                        poolParallelJobs: 50,
-                        // 池(pool)的名称
-                        // 可以修改名称来创建其余选项都一样的池(pool)
-                        name: 'my-pool',
-                    },
-                },
-                'babel-loader',
-            ],
-        },
-        {
-            test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-        },
-        {
-            test: /\.less$/, // 处理本地less样式文件，开启css module功能
-            include: [PATH_SRC],
-            exclude: [PATH_NODE_MODULES],
-            use: [
-                MiniCssExtractPlugin.loader,
-                {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                    },
-                },
-                'postcss-loader',
-                {
-                    loader: 'less-loader',
-                    options: {
-                        javascriptEnabled: true,
-                    },
-                },
-            ],
-        },
-        {
-            test: /\.(png|svg|jpg|gif)$/,
-            use: [{
-                loader: 'file-loader',
-                options: {
-                    limit: 11920,
-                },
-            }],
-        }],
     },
 };
