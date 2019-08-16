@@ -1,20 +1,11 @@
-// const path = require('path')
-// const React = require('react');
-// const {ReactDOMServer} = require('react-dom/server')
-// const express = require('express')
-// const config = require('./etc/config.json')
-// const routes = require('./etc/routes.js')
-// import path from 'path';
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-// import { matchPath } from 'react-router-dom';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import config from '../etc/config.json';
-// import routes from '../etc/routes'
 import View from './index.server';
-// import ClientRoutes from './config/RouteConfig';
 
 const app = express();
 
@@ -27,10 +18,16 @@ let html = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf8'); 
 html = html.replace(/(<link.*)href="(.*)"(.*?>)/, `$1href="/static/$2"$3`);
 html = html.replace(/<script.+<\/script>/, '');
 
+// 处理接口请求
+app.all('/api/*', (req, res) => {
+    res.send({
+        code: 0,
+        data: {}
+    });
+});
+
+// 处理页面请求
 app.get('/*', (req, res) => {
-    // const currRoute = ClientRoutes.find((route) => {
-    //     return matchPath(req.url, route);
-    // });
     html = html.replace(/(<body>).*(<\/body>)/, `$1<div id="app">${renderToString(<View location={req.url}/>)}</div>$2`);
     res.send(html);
 });

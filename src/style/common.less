@@ -1,0 +1,9 @@
+// 定义内容区域宽度
+@contentWidth: 1424px;
+// 定义底部高度
+@footHeight: 60px;
+
+// 像素转rem
+.px2rem(@name, @px) {
+    @{name}: @px / @baseFontSize * 1rem;
+}

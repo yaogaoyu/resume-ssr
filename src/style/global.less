@@ -1,0 +1,24 @@
+@import "common.less";
+
+:global {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #app {
+        width: 100vw;
+        // .px2rem(font-size, 16px);
+        font-size: 1.3vw;
+    }
+
+    .content {
+        width: @contentWidth;
+        min-height: calc(100vh - @footHeight);
+        margin: 0 auto;
+    }
+
+    .foot {
+        height: @footHeight;
+    }
+}
