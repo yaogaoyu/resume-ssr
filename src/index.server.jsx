@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 // import ReactDOM from 'react-dom';
-import { StaticRouter, Route } from 'react-router-dom';
+import { StaticRouter, Route, Switch } from 'react-router-dom';
 // import { routeType } from 'config/config.json';
 import Router from './router/Router.server';
 
@@ -14,22 +14,17 @@ export default (props) => {
     }
 
     // const RouterType = getRouteType();
+    const context = {};
 
     const layout = (
-        <StaticRouter location={props.location}>
-            <Route
-                render={() => {
-                    return (
-                        <Fragment>
-                            <div style={{ minHeight: 'calc(100vh - 153px)' }}>
-                                {Router.genRouter()}
-                            </div>
-                            {genGlobalFooter()}
-                        </Fragment>
-                    );
-                }}
-            />
-        </StaticRouter>
+        <Fragment>
+            <StaticRouter location={props.location} context={context}>
+                <div style={{ minHeight: 'calc(100vh - 153px)' }}>
+                    {Router.genRouter()}
+                </div>
+            </StaticRouter>
+            {genGlobalFooter()}
+        </Fragment>
     );
 
     return layout;

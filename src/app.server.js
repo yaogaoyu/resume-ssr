@@ -24,13 +24,14 @@ app.enable('view cache'); //开启模板缓存
 app.use('/static', express.static(path.resolve(__dirname, '../dist')));
 
 let html = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf8');  //require('./index.html');
+html = html.replace(/(<link.*)href="(.*)"(.*?>)/, `$1href="/static/$2"$3`);
 html = html.replace(/<script.+<\/script>/, '');
 
 app.get('/*', (req, res) => {
     // const currRoute = ClientRoutes.find((route) => {
     //     return matchPath(req.url, route);
     // });
-    html = html.replace(/\{app\}/, renderToString(<View location={req.url}/>));
+    html = html.replace(/(<body>).*(<\/body>)/, `$1<div id="app">${renderToString(<View location={req.url}/>)}</div>$2`);
     res.send(html);
 });
 

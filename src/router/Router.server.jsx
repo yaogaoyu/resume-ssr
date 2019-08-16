@@ -48,6 +48,9 @@ function RouterGenerator() {
         return (
             <Switch>
                 {routes}
+                <Route
+                    component={() => { return <div>NOT FOUND</div>; }}
+                />
             </Switch>
         );
     }
