@@ -1,8 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 // import ReactDOM from 'react-dom';
 import { StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 // import { routeType } from 'config/config.json';
 import Router from './router/Router.server';
+import RootReducer from './reducers/RootReducer';
 import './style/global.less';
 
 
@@ -18,14 +21,14 @@ export default (props) => {
     const context = {};
 
     const layout = (
-        <Fragment>
+        <Provider store={createStore(RootReducer)}>
             <StaticRouter location={props.location} context={context}>
                 <div className="content">
                     {Router.genRouter()}
                 </div>
             </StaticRouter>
             {genGlobalFooter()}
-        </Fragment>
+        </Provider>
     );
 
     return layout;
