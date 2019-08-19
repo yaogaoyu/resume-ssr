@@ -43,6 +43,7 @@
     "babel-plugin-import": "^1.12.0",
     "cache-loader": "^4.0.1",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",

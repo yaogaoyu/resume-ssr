@@ -5,7 +5,7 @@ const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Package = require('../package.json');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -184,6 +184,11 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[name].css',
         }),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, '../static'),
+            to: path.resolve(__dirname, '../dist/static'),
+            ignore: ['.DS_Store'],
+        }]),
     ],
     resolve: {
         alias: {

@@ -1,8 +1,9 @@
 import React from 'react';
+import Description from 'components/Description';
 import './index.less';
 
 export default class Index extends React.PureComponent {
     render() {
-        return <div className="app">SSR INDEX</div>;
+        return <Description />;
     }
 }
