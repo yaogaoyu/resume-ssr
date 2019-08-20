@@ -34,4 +34,4 @@ app.get('/*', (req, res) => {
     res.send(html);
 });
 
-app.listen(config.port, () => console.log('Example app listening on port 3000!'))
+app.listen(config.port, () => console.log('Yao\'SSR app listening on port 3000!'))

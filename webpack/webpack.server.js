@@ -29,7 +29,7 @@ const src = {
 // },
 // // target: 'node',
 // plugins: [
-    
+
 //     // 不打包moment的语言包，达到减少打包体积的效果
 //     // new webpack.ContextReplacementPlugin(
 //     //     /moment[/\\]locale$/,
@@ -45,7 +45,7 @@ const src = {
 //         },
 //         chunksSortMode: 'none',
 //     }),
-    
+
 //     new MiniCssExtractPlugin({
 //         filename: '[name].[contenthash].css',
 //         chunkFilename: '[name].[contenthash].css',
@@ -187,7 +187,7 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../static'),
             to: path.resolve(__dirname, '../dist/static'),
-            ignore: ['.DS_Store'],
+            ignore: ['.DS_Store', '.gitignore'],
         }]),
     ],
     resolve: {

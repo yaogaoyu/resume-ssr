@@ -1,37 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import Description from 'components/Description';
+import { connect } from 'react-redux';
 import './index.less';
 
-export default class Index extends React.PureComponent {
-    // constructor(props) {
-    //     super(props);
-    //     const [title] = useState(0);
-    //     this.state = {
-    //         title: '',
-    //     };
-    // }
-
-    mapStateToProps(state) {
-        return {
-            title: state.title,
+class Index extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        // const [title] = useState(0);
+        this.state = {
+            title: '112233',
         };
+        console.log(props);
     }
 
-    mapDispatchToProps(dispatch) {
-        return {
-            changeTitle: () => { this._changeTitle(dispatch); },
-        };
-    }
-
-    _changeTitle(dispatch) {
-        const [title] = useState(0);
-        console.log(dispatch, title);
+    _changeTitle = (dispatch) => {
+        // const [title] = useState(0);
+        console.log(dispatch, '123');
         // dispatch();
     }
 
     render() {
         // return <Description />;
-        const { title = '' } = this.state || {};
+        const { title = '' } = this.state;
         return (
             <div>
                 {title}
@@ -39,3 +29,5 @@ export default class Index extends React.PureComponent {
         );
     }
 }
+
+export default connect()(Index);
