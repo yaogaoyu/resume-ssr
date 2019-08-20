@@ -5,6 +5,7 @@
 !etc/
 !src/
 !webpack/
+!static/
 
 !.babelrc
 !.eslintignore
