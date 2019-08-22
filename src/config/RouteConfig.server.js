@@ -8,7 +8,7 @@
 import IndexPage from '../pages/Index';
 import TestPage from '../pages/Test';
 
-export default [{
+const routers = [{
         path: '/',
         exact: true,
         // component: () => require('../pages/Index'),
@@ -39,3 +39,17 @@ export default [{
     //     }],
     // }
 ];
+
+export function getComponentByPath(path) {
+    if (!path) return null;
+    let comp = null;
+    routers.some((route) => {
+        if (route.path === path) {
+            comp = route.component;
+            return true;
+        }
+    });
+    return comp;
+};
+
+export default routers;

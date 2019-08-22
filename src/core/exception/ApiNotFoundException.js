@@ -1,0 +1,22 @@
+/**
+ * 定义接口404异常组件。
+ *
+ * @author    姚尧 <yaoyao2@douyu.tv>
+ */
+
+export default class ApiNotFoundException extends Error {
+    /* Exceptions for Remote START */
+    static MSG = '未知接口';
+
+    /**
+     * 构造函数。
+     */
+    constructor(message) {
+        super();
+        if ('captureStackTrace' in Error) {
+            Error.captureStackTrace(this, ApiNotFoundException);
+        }
+        this.name = 'ApiNotFoundException';
+        this.message = `${ApiNotFoundException.MSG}. ${message}`;
+    }
+}

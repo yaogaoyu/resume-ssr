@@ -162,7 +162,7 @@ module.exports = {
         }],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new ProgressBarPlugin(),
         // 在开发时不需要每个页面都引用React
         new webpack.ProvidePlugin({
