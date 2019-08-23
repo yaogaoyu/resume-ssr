@@ -3,18 +3,38 @@
  */
 
 import React from 'react';
-import ApiClient from '../../core/api/ApiClient';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import ApiClient from 'core/api/ApiClient';
+import ReducerRegister from 'core/redux/ReducerRegister';
+import Reducer from './Reducer';
 
-export default class Description extends React.Component {
+class Description extends React.Component {
     static loadData = async (store) => {
         const result = await ApiClient.get('api test1');
         store.dispatch({
             type: 'init-data',
-        }, result.data);
+            result: result.data,
+        });
         return result;
     };
 
+    static registerReduce = () => {
+        console.log('registerReduce description');
+        ReducerRegister.getInstance().registe('descriptionReducer', Reducer);
+    };
+
+    static propTypes = {
+        title: PropTypes.string,
+    };
+
+    static defaultProps = {
+        title: '',
+    };
+
     render() {
+        const { title } = this.props;
+        console.log(title);
         return (
             <div className="description">
                 <div className="header">
@@ -24,7 +44,7 @@ export default class Description extends React.Component {
                 </div>
                 <div className="details">
                     <div>姚先生</div>
-                    <div>222</div>
+                    <div>{title}</div>
                     <div>333</div>
                     <div>444</div>
                 </div>
@@ -32,3 +52,18 @@ export default class Description extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    console.log('description state', state);
+    return {
+        title: state.descriptionReducer.title,
+    };
+};
+
+// const mapDispatchToProps = dispatch => ({
+//     getHomeList() {
+//         dispatch(getHomeList());
+//     }
+// });
+
+export default connect(mapStateToProps)(Description);

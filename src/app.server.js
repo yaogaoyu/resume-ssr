@@ -1,7 +1,6 @@
 
 import React from 'react';
 // import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { renderToString } from 'react-dom/server';
 import express from 'express';
 import fs from 'fs';
@@ -9,7 +8,9 @@ import path from 'path';
 import config from '../etc/config.json';
 import View from './index.server';
 import { getComponentByPath } from './config/RouteConfig.server';
-import RootReducer from './reducers/RootReducer';
+import Store from './core/redux/Store';
+import ReducerRegister from './core/redux/ReducerRegister';
+
 
 const app = express();
 
@@ -24,10 +25,6 @@ let html = fs.readFileSync(path.join(__dirname, '../dist/index.html'), 'utf8'); 
 html = html.replace(/(<link.*)href="(.*)"(.*?>)/, `$1href="/s/$2"$3`);
 html = html.replace(/<script.+<\/script>/, '');
 
-const getStore = () => {
-    return createStore(RootReducer);
-};
-
 // 处理接口请求
 app.all('/api/*', (req, res) => {
     res.send({
@@ -41,9 +38,10 @@ app.all('/api/*', (req, res) => {
 // 处理页面请求
 app.get('/*', async (req, res) => {
     // todo 拿到当前路由对应的页面，进行数据初始化
-
-    const store = getStore();
     const pageComp = getComponentByPath(req.url);
+    pageComp.registerReduce();
+    const reducers = ReducerRegister.getInstance().reducers;
+    const store = Store(reducers).getStore();
     await pageComp.loadData(store);
     html = await html.replace(/(<body>).*(<\/body>)/, `$1<div id="app">${renderToString(<View location={req.url} store={store} />)}</div>$2`);
     await res.send(html);

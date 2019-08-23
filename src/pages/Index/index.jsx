@@ -1,14 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Description from 'components/Description';
-// import { connect } from 'react-redux';
+import ReducerRegister from 'core/redux/ReducerRegister';
+import Reducer from './Reducer';
 import './index.less';
 
-export default class Index extends React.PureComponent {
+class Index extends React.PureComponent {
     static loadData = async (store) => {
-        await Description.loadData(store);
+        console.log('loadData');
+        const result = await Description.loadData(store);
+        return result.data;
+    };
+
+    static registerReduce = () => {
+        console.log('index registerReduces');
+        Description.registerReduce();
+        ReducerRegister.getInstance().registe('indexReducer', Reducer);
     };
 
     render() {
+        console.log(this.props);
         return <Description />;
         // const { title = '' } = this.state;
         // return (
@@ -18,3 +29,5 @@ export default class Index extends React.PureComponent {
         // );
     }
 }
+
+export default connect()(Index);
