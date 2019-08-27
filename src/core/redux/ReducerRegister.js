@@ -2,7 +2,6 @@
  * 定义Reducer注册中心
  */
 
-
 export default class ReducerRegister {
     reducers = {};
 

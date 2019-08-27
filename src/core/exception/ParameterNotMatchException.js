@@ -4,7 +4,7 @@
  * @author    姚尧 <yaoyao2@douyu.tv>
  */
 
-export default class ParametersNotMatchException extends Error {
+export default class ParameterNotMatchException extends Error {
     /* Exceptions for Remote START */
     static MSG = '传入参数不匹配';
 
@@ -14,9 +14,9 @@ export default class ParametersNotMatchException extends Error {
     constructor(message) {
         super();
         if ('captureStackTrace' in Error) {
-            Error.captureStackTrace(this, ParametersNotMatchException);
+            Error.captureStackTrace(this, ParameterNotMatchException);
         }
-        this.name = 'ParametersNotMatchException';
-        this.message = `${ParametersNotMatchException.MSG}. ${message}`;
+        this.name = 'ParameterNotMatchException';
+        this.message = `${ParameterNotMatchException.MSG}. ${message}`;
     }
 }

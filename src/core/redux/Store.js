@@ -1,15 +1,16 @@
 import { createStore, combineReducers } from 'redux';
-// import ReducerRegister from './ReducerRegister';
 
+/**
+ * Redux中创建Store
+ */
 export default (reducers) => {
-    // const reducers = combineReducers(ReducerRegister.getInstance().reducers || {});
     if (!reducers) {
         throw new Error('无法创建Store');
     }
 
     const getStore = () => {
-        console.log(reducers);
-        return createStore(combineReducers(reducers || {}));
+        // 创建 Store时可以加入redux中间件
+        return createStore(combineReducers(reducers));
     };
 
     return {

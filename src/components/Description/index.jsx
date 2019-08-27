@@ -6,9 +6,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ApiClient from 'core/api/ApiClient';
-import ReducerRegister from 'core/redux/ReducerRegister';
+import comp from 'core/decorate/comp';
 import Reducer from './Reducer';
 
+// 定义组件名称
+const COMP_NAME = 'comp.Description';
+
+@comp(COMP_NAME, Reducer)
 class Description extends React.Component {
     static loadData = async (store) => {
         const result = await ApiClient.get('api test1');
@@ -17,11 +21,6 @@ class Description extends React.Component {
             result: result.data,
         });
         return result;
-    };
-
-    static registerReduce = () => {
-        console.log('registerReduce description');
-        ReducerRegister.getInstance().registe('descriptionReducer', Reducer);
     };
 
     static propTypes = {
@@ -34,7 +33,6 @@ class Description extends React.Component {
 
     render() {
         const { title } = this.props;
-        console.log(title);
         return (
             <div className="description">
                 <div className="header">
@@ -54,9 +52,8 @@ class Description extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('description state', state);
     return {
-        title: state.descriptionReducer.title,
+        title: state[COMP_NAME].title,
     };
 };
 

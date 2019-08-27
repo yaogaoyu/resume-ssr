@@ -5,11 +5,11 @@ import { renderToString } from 'react-dom/server';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import Store from 'core/redux/Store';
+import ReducerRegister from 'core/redux/ReducerRegister';
 import config from '../etc/config.json';
 import View from './index.server';
 import { getComponentByPath } from './config/RouteConfig.server';
-import Store from './core/redux/Store';
-import ReducerRegister from './core/redux/ReducerRegister';
 
 
 const app = express();
@@ -37,13 +37,15 @@ app.all('/api/*', (req, res) => {
 
 // 处理页面请求
 app.get('/*', async (req, res) => {
-    // todo 拿到当前路由对应的页面，进行数据初始化
+    // 拿到当前路由对应的页面，注册reducer
     const pageComp = getComponentByPath(req.url);
-    pageComp.registerReduce();
     const reducers = ReducerRegister.getInstance().reducers;
+    // 创建store
     const store = Store(reducers).getStore();
+    // 初始化数据
     await pageComp.loadData(store);
     html = await html.replace(/(<body>).*(<\/body>)/, `$1<div id="app">${renderToString(<View location={req.url} store={store} />)}</div>$2`);
+    // 发送转换后的HTML
     await res.send(html);
 });
 
