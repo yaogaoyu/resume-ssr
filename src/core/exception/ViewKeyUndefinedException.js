@@ -1,7 +1,7 @@
 /**
  * 定义视图标识未定义的异常组件。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class ViewKeyUndefinedException extends Error {

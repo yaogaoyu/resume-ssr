@@ -1,6 +1,6 @@
 /**
  * 定义API拦截器注册器, 单例模式
- * @author 姚尧<yaoyao2@douyu.tv>
+ * @author 姚尧<yaogaoyu@qq.com>
  */
 
 let instance;

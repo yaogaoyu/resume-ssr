@@ -1,7 +1,7 @@
 /**
  * 定义页面无法到达的异常。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class PageUnreachableException extends Error {

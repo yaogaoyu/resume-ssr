@@ -1,9 +1,8 @@
 /**
- * @author 姚尧<yaoyao2@douyu.tv>
+ * @author 姚尧<yaogaoyu@qq.com>
  */
 import ApiClient from './ApiClient';
-import ApiMapping from './ApiMapping';
 
 export {
-    ApiClient, ApiMapping,
+    ApiClient,
 };

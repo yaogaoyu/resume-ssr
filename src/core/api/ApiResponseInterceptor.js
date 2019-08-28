@@ -1,6 +1,6 @@
 /**
  * 定义API响应拦截器
- * @author 姚尧<yaoyao2@douyu.tv>
+ * @author 姚尧<yaogaoyu@qq.com>
  */
 
 // import { Log } from 'util';

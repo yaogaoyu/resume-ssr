@@ -1,7 +1,7 @@
 /**
  * 定义Service对象已存在异常组件。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class ServiceExistsException extends Error {

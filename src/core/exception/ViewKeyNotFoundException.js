@@ -1,7 +1,7 @@
 /**
  * 定义视图标识未找到的异常组件。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class ViewKeyNotFoundException extends Error {

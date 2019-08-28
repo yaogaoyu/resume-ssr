@@ -1,7 +1,7 @@
 /**
  * 定义网络请求Method不支持异常组件。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class HttpMethodNotSupportException extends Error {

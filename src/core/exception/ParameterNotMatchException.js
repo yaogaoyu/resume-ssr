@@ -1,7 +1,7 @@
 /**
  * 定义参数异常组件。
  *
- * @author    姚尧 <yaoyao2@douyu.tv>
+ * @author    姚尧 <yaogaoyu@qq.com>
  */
 
 export default class ParameterNotMatchException extends Error {

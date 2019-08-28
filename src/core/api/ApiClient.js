@@ -1,6 +1,6 @@
 /**
  * 定义API调用类
- * @author 姚尧<yaoyao2@douyu.tv>
+ * @author 姚尧<yaogaoyu@qq.com>
  */
 
 import Axios from 'axios';
