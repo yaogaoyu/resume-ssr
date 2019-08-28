@@ -16,13 +16,6 @@ export default class Index extends React.PureComponent {
         ]);
     };
 
-    /**
-     * 初始化reducer
-     */
-    static registeReduce = () => {
-        // Description.registerReduce();
-    };
-
     render() {
         return <Description />;
     }

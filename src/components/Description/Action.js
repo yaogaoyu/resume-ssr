@@ -4,4 +4,14 @@
 
 import ApiClient from 'core/api/ApiClient';
 
-const getInspect = () => {};
+/**
+ * Description - Action
+ * 负责Description的业务处理
+ */
+export const getInspect = async () => {
+    const result = await ApiClient.get('api test1');
+    return {
+        type: 'init-data',
+        data: result.data,
+    };
+};

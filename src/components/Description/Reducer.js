@@ -1,10 +1,9 @@
-const descriptionReducer = (state = {}, action) => {
-    console.log('descriptionReducer Reducer', state, action);
+const descriptionReducer = (state, action) => {
     let resultState = {};
     switch (action.type) {
         case 'init-data':
             resultState = {
-                ...action.result,
+                ...action.data,
             };
             break;
         default:

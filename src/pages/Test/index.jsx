@@ -1,5 +1,9 @@
 import React from 'react';
 
-export default () => {
+const test = () => {
     return <div>Test</div>;
 };
+
+test.loadData = () => {};
+
+export default test;

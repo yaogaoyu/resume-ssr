@@ -5,9 +5,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ApiClient from 'core/api/ApiClient';
+// import ApiClient from 'core/api/ApiClient';
 import comp from 'core/decorate/comp';
 import Reducer from './Reducer';
+import { getInspect } from './Action';
 
 // 定义组件名称
 const COMP_NAME = 'comp.Description';
@@ -15,12 +16,9 @@ const COMP_NAME = 'comp.Description';
 @comp(COMP_NAME, Reducer)
 class Description extends React.Component {
     static loadData = async (store) => {
-        const result = await ApiClient.get('api test1');
-        store.dispatch({
-            type: 'init-data',
-            result: result.data,
-        });
-        return result;
+        const inspectAction = await getInspect();
+        console.log(inspectAction);
+        store.dispatch(inspectAction);
     };
 
     static propTypes = {

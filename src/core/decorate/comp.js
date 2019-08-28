@@ -17,7 +17,10 @@ export default (name, reducer) => {
         throw new ParameterNotMatchException('@comp中reducer类型不匹配');
     }
     return (comp) => {
-        comp.namespace = name;
+        // 将组件名赋值给组件属性
+        comp.shadow = name;
+        // 自动补全部分规范接口
+        if (!comp.loadData) comp.loadData = () => {};
         ReducerRegister.getInstance().registe(name, reducer);
     };
 };
