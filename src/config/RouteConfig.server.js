@@ -6,18 +6,13 @@
 /* eslint-disable */
 
 import IndexPage from '../pages/Index';
-import TestPage from '../pages/Test';
+// import TestPage from '../pages/Test';
 
 const routers = [{
         path: '/',
         exact: true,
         // component: () => require('../pages/Index'),
         component: IndexPage,
-    }, {
-        path: '/test',
-        exact: true,
-        // component: () => require('../pages/Index'),
-        component: TestPage,
     },
     // {
     //     path: '/tableDemo',

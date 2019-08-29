@@ -48,5 +48,4 @@ app.get('/*', async (req, res) => {
     // 发送转换后的HTML
     await res.send(html);
 });
-
 app.listen(config.port, () => console.log('Yao\'SSR app listening on port 3000!'));
