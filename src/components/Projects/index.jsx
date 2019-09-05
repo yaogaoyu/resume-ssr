@@ -22,22 +22,14 @@ class Description extends React.Component {
 
     static propTypes = {
         title: PropTypes.string,
-        sex: PropTypes.string,
-        birth: PropTypes.string,
-        comment: PropTypes.string,
     };
 
     static defaultProps = {
         title: '',
-        sex: '',
-        birth: '',
-        comment: '',
     };
 
     render() {
-        const {
-            title, sex, birth, comment,
-        } = this.props;
+        const { title } = this.props;
         return (
             <div className="description">
                 <div className="header">
@@ -46,10 +38,10 @@ class Description extends React.Component {
                     </div>
                 </div>
                 <div className="details">
+                    <div>姚先生</div>
                     <div>{title}</div>
-                    <div>{sex}</div>
-                    <div>{birth}</div>
-                    <div>{comment}</div>
+                    <div>333</div>
+                    <div>444</div>
                 </div>
             </div>
         );
@@ -59,9 +51,6 @@ class Description extends React.Component {
 const mapStateToProps = (state) => {
     return {
         title: state[COMP_NAME].title,
-        sex: state[COMP_NAME].sex,
-        birth: state[COMP_NAME].birth,
-        comment: state[COMP_NAME].comment,
     };
 };
 

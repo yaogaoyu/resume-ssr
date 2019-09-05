@@ -13,7 +13,7 @@ export const getInspect = async () => {
     // const result = await ApiClient.get('api test1');
     const result = await findOne('description', {});
     return {
-        type: 'description-init-data',
+        type: 'init-data',
         data: result,
     };
 };

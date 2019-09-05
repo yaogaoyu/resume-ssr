@@ -3,17 +3,17 @@
  */
 
 // import ApiClient from 'core/api/ApiClient';
-import { findOne } from 'core/mongo/MongoClient';
+import { findArray } from 'core/mongo/MongoClient';
 
 /**
  * Description - Action
  * 负责Description的业务处理
  */
-export const getInspect = async () => {
+export const getEducations = async () => {
     // const result = await ApiClient.get('api test1');
-    const result = await findOne('description', {});
+    const result = await findArray('educations', {});
     return {
-        type: 'description-init-data',
+        type: 'init-data',
         data: result,
     };
 };

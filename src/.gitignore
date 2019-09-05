@@ -6,5 +6,6 @@
 
 !*.js
 !*.jsx
+!*.json
 !*.html
 !*.less
