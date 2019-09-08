@@ -1,17 +1,18 @@
 /**
- * 教育经历
+ * 工作经历
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import ApiClient from 'core/api/ApiClient';
 import comp from 'core/decorate/comp';
 import Reducer from './Reducer';
 import { getJobs } from './Action';
+import './index.less';
 
 // 定义组件名称
-const COMP_NAME = 'comp.Educations';
+const COMP_NAME = 'comp.Jobs';
 
 @comp(COMP_NAME, Reducer)
 class Jobs extends React.Component {
@@ -20,45 +21,45 @@ class Jobs extends React.Component {
         store.dispatch(action);
     };
 
-    // static propTypes = {
-    //     title: PropTypes.string,
-    // };
+    static propTypes = {
+        jobs: PropTypes.array,
+    };
 
-    // static defaultProps = {
-    //     title: '',
-    // };
+    static defaultProps = {
+        jobs: [],
+    };
+
+    renderJobs() {
+        const { jobs } = this.props;
+        const jobsDom = jobs.map((job) => {
+            const {
+                _id, company, department, position, start, end, description,
+            } = job;
+            return (
+                <li className="job" key={_id}>
+                    <span className="job-content">
+                        <div className="row bold-label company">
+                            {company}
+                        </div>
+                        <div className="row job-info">
+                            <span className="department info-item">{department}</span>
+                            <span className="info-item">{position}</span>
+                            <span className="info-item">{`${start} - ${end || '至今'}`}</span>
+                        </div>
+                        <div className="row description" dangerouslySetInnerHTML={{ __html: description }} />
+                    </span>
+                </li>
+            );
+        });
+        return jobsDom;
+    }
 
     render() {
-        // const { title } = this.props;
         return (
-            <div className="jobs">
-                <ul className="jobs-content">
-                    <li className="job">
-                        <div className="row">
-                            <span className="col-item">
-                                <span className="label">公司名</span>
-                                <span className="value">222</span>
-                            </span>
-                            <span className="col-item">
-                                <span className="label">部门</span>
-                                <span className="value">222</span>
-                            </span>
-                            <span className="col-item">
-                                <span className="label">职位</span>
-                                <span className="value">222</span>
-                            </span>
-                            <span className="col-item">
-                                <span className="label">时长</span>
-                                <span className="value">222</span>
-                            </span>
-                        </div>
-                        <div className="row">
-                            <span className="col-item">
-                                <span className="label">简介</span>
-                                <span className="value">222</span>
-                            </span>
-                        </div>
-                    </li>
+            <div className="module">
+                <div className="module-divider">工作经历</div>
+                <ul className="jobs">
+                    {this.renderJobs()}
                 </ul>
             </div>
         );
@@ -67,7 +68,7 @@ class Jobs extends React.Component {
 
 const mapStateToProps = (props) => {
     return {
-        title: props[COMP_NAME].title,
+        jobs: props[COMP_NAME],
     };
 };
 

@@ -1,19 +1,17 @@
 /**
- * 描述模块业务
+ * 教育模块业务
  */
 
-// import ApiClient from 'core/api/ApiClient';
 import { findArray } from 'core/mongo/MongoClient';
 
 /**
- * Description - Action
- * 负责Description的业务处理
+ * Educations - Action
+ * 负责Educations的业务处理
  */
 export const getEducations = async () => {
-    // const result = await ApiClient.get('api test1');
     const result = await findArray('educations', {});
     return {
-        type: 'init-data',
+        type: 'edu-init-data',
         data: result,
     };
 };

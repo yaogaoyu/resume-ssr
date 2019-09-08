@@ -3,11 +3,10 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import ApiClient from 'core/api/ApiClient';
 import comp from 'core/decorate/comp';
-import Reducer from '../Description/Reducer';
+import Reducer from './Reducer';
 import { getEducations } from './Action';
 
 // 定义组件名称
@@ -20,41 +19,44 @@ class Description extends React.Component {
         store.dispatch(action);
     };
 
-    // static propTypes = {
-    //     title: PropTypes.string,
-    // };
+    static propTypes = {
+        edus: PropTypes.array,
+    };
 
-    // static defaultProps = {
-    //     title: '',
-    // };
+    static defaultProps = {
+        edus: [],
+    };
+
+    renderEdus() {
+        const { edus } = this.props;
+        const edusDom = edus.map((edu) => {
+            const {
+                _id, school, subject, qualification, start, end,
+            } = edu;
+            return (
+                <li className="edu" key={_id}>
+                    <span className="edu-content">
+                        <div className="row bold-label school">
+                            {school}
+                        </div>
+                        <div className="row edu-info">
+                            <span className="info-item">{subject}</span>
+                            <span className="info-item">{qualification}</span>
+                            <span className="info-item">{`${start} - ${end}`}</span>
+                        </div>
+                    </span>
+                </li>
+            );
+        });
+        return edusDom;
+    }
 
     render() {
-        // const { title } = this.props;
         return (
-            <div className="educations">
-                <ul className="edu-contents">
-                    <li className="edu">
-                        <div className="edu-content">
-                            <div className="row">
-                                <span className="col-item">
-                                    <span className="label">学校</span>
-                                    <span className="value">222</span>
-                                </span>
-                                <span className="col-item">
-                                    <span className="label">专业</span>
-                                    <span className="value">222</span>
-                                </span>
-                                <span className="col-item">
-                                    <span className="label">时间</span>
-                                    <span className="value">222</span>
-                                </span>
-                                <span className="col-item">
-                                    <span className="label">学历</span>
-                                    <span className="value">222</span>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
+            <div className="module">
+                <div className="module-divider">教育经历</div>
+                <ul className="edus">
+                    {this.renderEdus()}
                 </ul>
             </div>
         );
@@ -63,7 +65,7 @@ class Description extends React.Component {
 
 const mapStateToProps = (props) => {
     return {
-        title: props[COMP_NAME].title,
+        edus: props[COMP_NAME],
     };
 };
 

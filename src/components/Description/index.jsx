@@ -2,13 +2,14 @@
  * 个人简介
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import ApiClient from 'core/api/ApiClient';
 import comp from 'core/decorate/comp';
 import Reducer from './Reducer';
 import { getInspect } from './Action';
+import './index.less';
 
 // 定义组件名称
 const COMP_NAME = 'comp.Description';
@@ -21,46 +22,72 @@ class Description extends React.Component {
     };
 
     static propTypes = {
-        title: PropTypes.string,
+        name: PropTypes.string,
         sex: PropTypes.string,
         birth: PropTypes.string,
+        email: PropTypes.string,
+        mobile: PropTypes.string,
         comment: PropTypes.string,
     };
 
     static defaultProps = {
-        title: '',
+        name: '',
         sex: '',
         birth: '',
+        email: '',
+        mobile: '',
         comment: '',
     };
 
     render() {
         const {
-            title, sex, birth, comment,
+            name, sex, birth, email, mobile, comment,
         } = this.props;
         return (
-            <div className="description">
-                <div className="header">
-                    <div className="headerWrap">
-                        <image src="/static/img/favorite.png" />
+            <Fragment>
+                <div className="module-divider">个人简介</div>
+                <div className="my-inspect">
+                    <div className="inspect">
+                        <div className="header">
+                            <img src="/static/img/yao.png" alt="个人头像" />
+                        </div>
+                        <div className="details">
+                            <div className="detail-item">
+                                <span className="detail-label">姓名：</span>
+                                <span>{name}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">性别：</span>
+                                <span>{sex}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">生日：</span>
+                                <span>{birth}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">邮箱：</span>
+                                <span>{email}</span>
+                            </div>
+                            <div className="detail-item">
+                                <span className="detail-label">电话：</span>
+                                <span>{mobile}</span>
+                            </div>
+                        </div>
                     </div>
+                    <div className="description" dangerouslySetInnerHTML={{ __html: comment }} />
                 </div>
-                <div className="details">
-                    <div>{title}</div>
-                    <div>{sex}</div>
-                    <div>{birth}</div>
-                    <div>{comment}</div>
-                </div>
-            </div>
+            </Fragment>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        title: state[COMP_NAME].title,
+        name: state[COMP_NAME].name,
         sex: state[COMP_NAME].sex,
         birth: state[COMP_NAME].birth,
+        mobile: state[COMP_NAME].mobile,
+        email: state[COMP_NAME].email,
         comment: state[COMP_NAME].comment,
     };
 };

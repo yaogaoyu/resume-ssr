@@ -1,0 +1,45 @@
+:global {
+    .jobs, .edus {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .job, .edu {
+            padding: 0 15px;
+            margin: 10px 0;
+            display: flex;
+
+            &:before {
+                content: "🏀";
+                font-size: 18px;
+                margin-right: 10px;
+                flex: 1;
+                flex-direction: column;
+                padding: 6px 0;
+            }
+
+            .job-content, .edu-content {
+                display: flex;
+                flex: 23;
+                flex-direction: column;
+            }
+
+            .row {
+                margin: 6px 0;
+            }
+
+            .job-info, .edu-info {
+                font-size: 14px;
+
+                .department {
+                    color: #252525;
+                    font-weight: bold;
+                }
+
+                .info-item {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

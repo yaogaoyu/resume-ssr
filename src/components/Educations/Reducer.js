@@ -1,8 +1,8 @@
 const reducer = (state, action) => {
-    let resultState = state || {};
+    let resultState = state || [];
     switch (action.type) {
-        case 'jobs-init-data':
-            resultState = action.data;
+        case 'edu-init-data':
+            resultState = action.data || [];
             break;
         default:
     }

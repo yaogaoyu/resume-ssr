@@ -15,6 +15,42 @@
         width: @contentWidth;
         min-height: calc(100vh - @footHeight);
         margin: 0 auto;
+
+        .my-resume {
+            width: 720px;
+            padding: 10px 15px;
+            margin: 0 auto;
+        }
+    }
+
+    .module {
+        margin-top: 20px;
+    }
+
+    .module-divider {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        margin: 10px 0;
+        color: #FF7700;
+        font-weight: bold;
+        &:before {
+            content: "";
+            margin-right: 20px;
+            height: 18px;
+            display: inline-block;
+            border-left: 4px #E6E6E6 solid;
+        }
+    }
+
+    .bold-label {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .description {
+        font-size: 16px;
+        color: #484848;
     }
 
     .foot {

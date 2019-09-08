@@ -25,15 +25,17 @@ db.description.insert({
     name: '',
     sex: '',
     birth: '',
+    email: '',
+    mobile: '',
     comment: ''
 })
 db.jobs.insert({
     company: '',
     department: '',
-    title: '',
+    position: '',
     start: '',
     end: '',
-    u: ''
+    description: ''
 })
 db.projects.insert({
     company: '',

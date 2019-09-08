@@ -1,10 +1,7 @@
-import React, { Fragment } from 'react';
-// import { connect } from 'react-redux';
+import React from 'react';
 import Description from 'components/Description';
 import Jobs from 'components/Jobs';
-// import Educations from 'components/Educations';
-// import ReducerRegister from 'core/redux/ReducerRegister';
-// import Reducer from './Reducer';
+import Educations from 'components/Educations';
 import './index.less';
 
 export default class Index extends React.PureComponent {
@@ -16,16 +13,17 @@ export default class Index extends React.PureComponent {
         return Promise.all([
             Description.loadData(store),
             Jobs.loadData(store),
-            // Educations.loadData(store),
+            Educations.loadData(store),
         ]);
     };
 
     render() {
         return (
-            <Fragment>
+            <div className="my-resume">
                 <Description />
                 <Jobs />
-            </Fragment>
+                <Educations />
+            </div>
         );
     }
 }
