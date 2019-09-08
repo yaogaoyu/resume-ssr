@@ -13,9 +13,9 @@ export default (props) => {
     /**
      * 渲染全局页脚
      */
-    function genGlobalFooter() {
-        return <div className="foot">Footer</div>;
-    }
+    // function genGlobalFooter() {
+    //     return <div className="foot">Footer</div>;
+    // }
 
     // function getStore() {
     //     return createStore(RootReducer);
@@ -33,7 +33,6 @@ export default (props) => {
                     {Router.genRouter()}
                 </div>
             </StaticRouter>
-            {genGlobalFooter()}
         </Provider>
     );
 
