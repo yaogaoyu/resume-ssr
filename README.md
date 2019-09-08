@@ -3,7 +3,8 @@
 ### 安装
 ```
 docker image pull mongo
-docker run --name resume-mongo -p 27017:27017 -v ~/DEV/docker-mount/mongo/db:/data/db -d mongo
+docker run --name resume-mongo -p 27017:27017 -v ~/DEV/docker-mount/mongo/db:/data/db -d mongo  // mac 或 linux
+docker run --name resume-mongo -p 27017:27017 -d mongo  // windows下安装，不然会有文件共享的权限问题
 ```
 ### 建表
 ```
@@ -37,20 +38,13 @@ db.jobs.insert({
     end: '',
     description: ''
 })
-db.projects.insert({
-    company: '',
-    department: '',
-    title: '',
-    start: '',
-    end: '',
-    u: ''
-})
 db.educations.insert({
     school: '',
+    subject: ''
+    qualification: '',
     start: '',
     end: '',
-    qualification: '',
-    u: ''
+
 })
 ```
 
