@@ -38,7 +38,7 @@ app.all('/api/*', (req, res) => {
 // 处理页面请求
 app.get('/*', async (req, res) => {
     // 拿到当前路由对应的页面，注册reducer
-    const pageComp = getComponentByPath(req.url);
+    const pageComp = getComponentByPath(req.path || '/');
     const reducers = ReducerRegister.getInstance().reducers;
     // 创建store
     const store = Store(reducers).getStore();
