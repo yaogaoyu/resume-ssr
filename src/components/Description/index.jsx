@@ -48,9 +48,9 @@ class Description extends React.Component {
                 <div className="module-divider">个人简介</div>
                 <div className="my-inspect">
                     <div className="inspect">
-                        <div className="header">
+                        {/* <div className="header">
                             <img src="/static/img/yao.png" alt="个人头像" />
-                        </div>
+                        </div> */}
                         <div className="details">
                             <div className="detail-item">
                                 <span className="detail-label">姓名：</span>
