@@ -12,8 +12,7 @@ import { findArray } from 'core/mongo/MongoClient';
 export const getJobs = async () => {
     // const result = await ApiClient.get('api test1');
     let result = await findArray('jobs', {});
-    // eslint-disable-next-line no-underscore-dangle
-    result = result.sort((a, b) => { return b._id - a._id; });
+    result = result.sort((a, b) => { return b.order - a.order; });
     return {
         type: 'jobs-init-data',
         data: result,
